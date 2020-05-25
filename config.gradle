@@ -1,0 +1,32 @@
+ext {
+
+    //单个
+    a = "a"
+
+    /*---------------------------- 基础配置 ------------------------------------*/
+    basic = [
+            applicationId            : "com.zjw.basicandroid",    //包名
+            compileSdkVersion        : 29,                     //sdk编译版本
+            minSdkVersion            : 16,                         //sdk兼容最低的安装版本
+            targetSdkVersion         : 29,                      //目标编译的版本
+            buildToolsVersion        : "29.0.2",                      //目标编译的版本
+            versionCode              : 1,                            //版本号
+            versionName              : "1.0",                        //版本名称
+
+    ]
+
+    /*---------------------------- 全局常量 ------------------------------------*/
+    field = [
+            serverHead     : "45456",
+            address        : "192.168.31.15",
+            jpushKey       : "",                               //极光推送的key
+            jpushChannel   : "developer-default",          //极光推送channel
+            amapLocationId : "",                         //高德地图的key
+            mobAppKey      : "",                              //mob sharesSdk appId
+            mobAppSecret   : "",                           //mob sharesSdk secret
+            weChatAppId    : "",                            //微信的appid
+            weChatAppSecret: "",                        //微信的app secret
+    ]
+
+
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="405dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp"
+        android:layout_centerInParent="true"
+        android:paddingTop="50dp"
+        android:paddingBottom="50dp"
+        android:paddingLeft="30dp"
+        android:elevation="5dp"
+        android:translationZ="3dp"
+        android:paddingRight="30dp"
+        android:background="@drawable/dialog_default_bg2">
+
+        <TextView
+            android:id="@+id/messageTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="24sp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/textBlack"
+            android:layout_centerHorizontal="true" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="80dp"
+            android:layout_below="@+id/messageTv"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/cancelBtn"
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:layout_marginRight="70dp"
+                android:textColor="@color/textWhite"
+                android:textSize="15sp"
+                android:text="取消"/>
+            <Button
+                android:id="@+id/okBtn"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/textBlack"
+                android:textSize="15sp"
+                android:text="确定"
+                android:layout_weight="1"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

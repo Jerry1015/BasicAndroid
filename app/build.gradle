@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.ext.basic.compileSdkVersion
+    defaultConfig {
+        applicationId rootProject.ext.basic.applicationId
+        minSdkVersion rootProject.ext.basic.minSdkVersion
+        targetSdkVersion rootProject.ext.basic.targetSdkVersion
+        versionCode rootProject.ext.basic.versionCode
+        versionName rootProject.ext.basic.versionName
+        testInstrumentationRunner basic.applicationId
+
+        //清单文件属性替换
+        manifestPlaceholders = [
+                JPUSH_PKGNAME    : rootProject.ext.basic.applicationId,
+                JPUSH_APPKEY     : rootProject.ext.field.jpushKey, //极光推送 appKey
+                JPUSH_CHANNEL    : rootProject.ext.field.jpushChannel, //暂时填写默认值即可.
+                WECHAT_PAY_APP_ID: rootProject.ext.field.weChatAppId,      //微信AppId
+                AMAP_LOCATION_ID : rootProject.ext.field.amapLocationId,       //高德地图 AppId
+        ]
+
+        //批量添加常量
+        rootProject.ext.field.each {
+            buildConfigField "String", "${it.key}", "\"${it.value}\""
+        }
+    }
+
+    //签名
+//    signingConfigs {
+//        debug {
+//            storeFile file("keystore/intexhmall.jks")
+//            storePassword "123456"
+//            keyAlias "intexhmall"
+//            keyPassword "123456"
+//        }
+//    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "IS_DEBUG", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean", "IS_DEBUG", "false"
+            minifyEnabled false
+            //zipAlignEnabled true  //是否对齐app所有资源,对齐后,会使得在运行时Android与应用程序间的交互更加有效率;
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {    //使用1.8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets {    //引入so文件
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    buildToolsVersion = basic.buildToolsVersion
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'com.jakewharton:butterknife:10.2.1'
+    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'androidx.annotation:annotation:1.0.2'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.1'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    implementation 'com.google.code.gson:gson:2.8.0'
+    implementation 'com.yanzhenjie.permission:support:2.0.1'   //动态权限
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.6' //不包含图片库
+    implementation 'com.github.bumptech.glide:glide:4.9.0'
+    implementation 'com.lzy.net:okgo:3.0.4'
+    implementation 'org.greenrobot:eventbus:3.0.0'
+    implementation 'com.lcodecorex:tkrefreshlayout:1.0.7'
+    implementation 'com.yanzhenjie.permission:support:2.0.1'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
+}
