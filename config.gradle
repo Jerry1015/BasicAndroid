@@ -7,7 +7,7 @@ ext {
     basic = [
             applicationId            : "com.zjw.basicandroid",    //包名
             compileSdkVersion        : 29,                     //sdk编译版本
-            minSdkVersion            : 16,                         //sdk兼容最低的安装版本
+            minSdkVersion            : 19,                         //sdk兼容最低的安装版本
             targetSdkVersion         : 29,                      //目标编译的版本
             buildToolsVersion        : "29.0.2",                      //目标编译的版本
             versionCode              : 1,                            //版本号
